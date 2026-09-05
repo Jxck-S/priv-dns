@@ -13,6 +13,9 @@ export const DASHBOARD_HTML = String.raw`<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>priv-dns</title>
+<!-- Inlined so the page stays self-contained: the CSP forbids external
+     resources, and a served path would need its own Access exemption. -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0Ij4gPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTQiIGZpbGw9IiMxYTFkMjIiLz4gPGcgc3Ryb2tlPSIjOGI5NDllIiBzdHJva2Utd2lkdGg9IjQuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj4gPGxpbmUgeDE9IjMyIiB5MT0iMzIiIHgyPSIzMiIgeTI9IjE1Ii8+IDxsaW5lIHgxPSIzMiIgeTE9IjMyIiB4Mj0iMTciIHkyPSI0MSIvPiA8bGluZSB4MT0iMzIiIHkxPSIzMiIgeDI9IjQ3IiB5Mj0iNDEiLz4gPC9nPiA8ZyBmaWxsPSIjZThlYWVkIj4gPGNpcmNsZSBjeD0iMzIiIGN5PSIxNSIgcj0iNyIvPiA8Y2lyY2xlIGN4PSIxNyIgY3k9IjQxIiByPSI3Ii8+IDxjaXJjbGUgY3g9IjQ3IiBjeT0iNDEiIHI9IjciLz4gPC9nPiA8Y2lyY2xlIGN4PSIzMiIgY3k9IjMyIiByPSIxMC41IiBmaWxsPSIjZjY4MjFmIiBzdHJva2U9IiMxYTFkMjIiIHN0cm9rZS13aWR0aD0iMi41Ii8+IDwvc3ZnPg==">
 <style>
   :root {
     --bg: #f6f7f9; --panel: #fff; --ink: #14171a; --muted: #666e77;

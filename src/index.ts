@@ -158,7 +158,7 @@ async function route(
         'Cache-Control': 'no-store',
         'Content-Security-Policy':
           "default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; " +
-          "connect-src 'self'; form-action 'none'; base-uri 'none'",
+          "img-src data:; connect-src 'self'; form-action 'none'; base-uri 'none'",
         ...SECURITY_HEADERS,
       },
     });
