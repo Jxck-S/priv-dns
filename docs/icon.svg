@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="priv-dns">
+  <title>priv-dns</title>
+
+  <!-- Rounded tile, matching the dashboard's dark panel. -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#22262d"/>
+      <stop offset="1" stop-color="#15181c"/>
+    </linearGradient>
+    <linearGradient id="hub" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fbad41"/>
+      <stop offset="1" stop-color="#f6821f"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  <rect x="3" y="3" width="506" height="506" rx="109" fill="none"
+        stroke="#ffffff" stroke-opacity="0.07" stroke-width="6"/>
+
+  <!-- Zone boundary: the namespace every site holds a full copy of. -->
+  <circle cx="256" cy="256" r="150" fill="none"
+          stroke="#f6821f" stroke-opacity="0.22" stroke-width="7"
+          stroke-dasharray="20 16" stroke-linecap="round"/>
+
+  <!-- Spokes: each site pulls from the centre, never from each other. -->
+  <g stroke="#8b949e" stroke-width="15" stroke-linecap="round" stroke-opacity="0.85">
+    <line x1="256" y1="256" x2="256" y2="120"/>
+    <line x1="256" y1="256" x2="138" y2="324"/>
+    <line x1="256" y1="256" x2="374" y2="324"/>
+  </g>
+
+  <!-- Site resolvers. -->
+  <g fill="#e8eaed">
+    <circle cx="256" cy="120" r="42"/>
+    <circle cx="138" cy="324" r="42"/>
+    <circle cx="374" cy="324" r="42"/>
+  </g>
+
+  <!-- The control plane: single source of truth. -->
+  <circle cx="256" cy="256" r="62" fill="url(#hub)"/>
+  <circle cx="256" cy="256" r="62" fill="none"
+          stroke="#15181c" stroke-width="10"/>
+</svg>
