@@ -132,6 +132,42 @@ is listed in a trailing comment rather than dropped silently.
 Anything not listed works too, as long as it reads one of these formats from a
 file - set `RELOAD_CMD` to whatever reloads it.
 
+## Getting started
+
+**Deploy it.** This is the real path — the control plane lives on Cloudflare
+and your resolvers pull from it.
+
+```sh
+npx wrangler r2 bucket create priv-dns-zones
+cp wrangler.toml.example wrangler.toml     # set your hostname and route
+openssl rand -base64 32 | npx wrangler secret put API_TOKEN
+npx wrangler deploy
+```
+
+Then create a zone and point each resolver at it:
+
+```sh
+curl -X POST https://dns-cp.example.net/api/zones \
+  -H "Authorization: Bearer $API_TOKEN" -H 'Content-Type: application/json' \
+  -d '{"origin":"example.net","defaultTtl":300}'
+```
+
+Put Cloudflare Access in front of the dashboard, issue a service token per
+resolver, and install the pull loop — [**Deploying**](docs/deploying.md) walks
+through all of it in order.
+
+**Or try it locally first**, with no Cloudflare account, tokens, or Access app:
+
+```sh
+npm install && cp .dev.vars.example .dev.vars
+npm run dev:local     # terminal 1
+npm run seed          # terminal 2 - sample records
+open http://localhost:8787/
+```
+
+Authentication is disabled in that mode, but only for requests arriving on
+loopback — see [Local development](docs/local-development.md).
+
 ## Documentation
 
 | | |
@@ -139,19 +175,6 @@ file - set `RELOAD_CMD` to whatever reloads it.
 | [Deploying](docs/deploying.md) | Cloudflare setup, Access, service tokens, and wiring up each resolver |
 | [API reference](docs/api.md) | Endpoints, concurrency, and the security model |
 | [Local development](docs/local-development.md) | Running it on your laptop with no Cloudflare account |
-
-## Quick start
-
-```sh
-npm install
-cp .dev.vars.example .dev.vars     # contains DEV_NO_AUTH=true
-npm run dev:local                  # terminal 1 - local R2 simulation
-npm run seed                       # terminal 2 - sample records
-open http://localhost:8787/
-```
-
-No Cloudflare account, no tokens, no Access app required. See
-[Local development](docs/local-development.md) for detail.
 
 ## License
 
