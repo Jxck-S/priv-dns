@@ -1,0 +1,30 @@
+name = "priv-dns"
+main = "src/index.ts"
+compatibility_date = "2025-07-18"
+
+# Disable the workers.dev URL entirely so the only way in is the route below.
+# A Worker reachable on *.workers.dev is reachable without passing through the
+# Cloudflare Access policy bound to the real hostname.
+workers_dev = false
+
+[vars]
+# Cloudflare Access team domain, e.g. "yourteam.cloudflareaccess.com".
+# Leave empty to disable Access verification (bearer-token-only mode).
+ACCESS_TEAM_DOMAIN = "yourteam.cloudflareaccess.com"
+# Application Audience (AUD) tag from the Access application settings.
+ACCESS_AUD = ""
+# Comma-separated hostnames this Worker will answer on.
+ALLOWED_HOSTS = "dns-cp.example.net"
+# Comma-separated exact origins allowed to make cross-origin API calls.
+# Empty (the default) means no CORS headers are emitted at all.
+CORS_ORIGINS = ""
+
+# The Worker must answer on a real hostname: Access policies attach to
+# hostnames, not to Workers. This domain must already be on the account.
+[[routes]]
+pattern = "dns-cp.example.net"
+custom_domain = true
+
+[[r2_buckets]]
+binding = "DNS_ZONES"
+bucket_name = "priv-dns-zones"

@@ -1,0 +1,10 @@
+# Local development only. This file is gitignored and `wrangler deploy` never
+# uploads it, so nothing here can reach a deployed Worker.
+
+# Disable authentication entirely for local testing. Only takes effect for
+# requests arriving on localhost/127.0.0.1 - see isDevNoAuth() in src/auth.ts.
+DEV_NO_AUTH=true
+
+# Used when DEV_NO_AUTH is not set, so you can exercise the real auth path.
+API_TOKEN=dev-token-abc123
+NOTIFY_SECRET=dev-notify-xyz

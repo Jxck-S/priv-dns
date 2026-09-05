@@ -1,0 +1,9 @@
+node_modules/
+.wrangler/
+.dev.vars
+dist/
+*.log
+
+# Real deployment config - copy from wrangler.toml.example and fill in.
+# Keeps your hostname, Access AUD and bucket name out of the public repo.
+wrangler.toml

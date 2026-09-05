@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm test
+
+  shellcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # The sync script runs on appliance firmware with no bash, so POSIX
+      # compliance is a correctness requirement rather than a style preference.
+      - name: Verify POSIX sh scripts parse under dash
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y dash >/dev/null
+          for f in scripts/zone-sync.sh; do
+            echo "checking $f"
+            dash -n "$f"
+          done

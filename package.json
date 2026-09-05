@@ -1,0 +1,36 @@
+{
+  "name": "priv-dns",
+  "version": "1.0.0",
+  "description": "Self-hosted internal DNS control plane on Cloudflare Workers and R2. Edit records in one dashboard; every site pulls the whole zone as an Unbound include, hosts file, or RFC1035 zone.",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "keywords": [
+    "dns",
+    "internal-dns",
+    "split-horizon",
+    "cloudflare-workers",
+    "r2",
+    "unbound",
+    "coredns",
+    "dnsmasq",
+    "pfsense",
+    "opnsense",
+    "homelab",
+    "wireguard"
+  ],
+  "scripts": {
+    "dev": "wrangler dev",
+    "dev:local": "wrangler dev --local --port 8787",
+    "seed": "./scripts/dev-seed.sh",
+    "deploy": "wrangler deploy",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250109.0",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8",
+    "wrangler": "^3.99.0"
+  }
+}
