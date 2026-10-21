@@ -28,14 +28,9 @@
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20250109.0",
-    "typescript": "^5.7.2",
-    "vitest": "^4.1.11",
-    "wrangler": "^4.59.1"
-  },
-  "overrides": {
-    "ws": "8.21.0",
-    "sharp": "0.35.4",
-    "undici": "7.29.1"
+    "@cloudflare/workers-types": "^5.20261021.1",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.5",
+    "wrangler": "^4.151.3"
   }
 }
